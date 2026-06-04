@@ -1,0 +1,12 @@
+# SequentialLearn
+
+> A modern mastery-based LMS where every unit must be earned: watch the lesson, take notes (by voice if you like), pass the quiz, then unlock the next unit.
+
+SequentialLearn is built around sequential unlocking, voice-enabled notes, exportable unit PDFs, and a distraction-free learning player.
+
+## Pages
+
+- [Home](/): Product overview and featured courses.
+- [Courses](/courses): Browse the full course marketplace.
+- [Sign in](/login): Sign in to your account.
+- [Create account](/register): Create a free student account.
