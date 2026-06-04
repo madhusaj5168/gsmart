@@ -40,6 +40,9 @@ export interface Unit {
   pdfTheme?: string;
   pdfWatermark?: { enabled: boolean; text: string; opacity: number; diagonal: boolean };
   pdfPageNumberStyle?: "minimal" | "pill" | "dots" | "roman" | "bar";
+  pdfSource?: "builder" | "uploaded";
+  pdfFileName?: string;
+  pdfUpdatedAt?: string;
   duration: string;
   resources: { name: string; url: string }[];
   quiz: Quiz;

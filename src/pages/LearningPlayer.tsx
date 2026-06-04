@@ -95,6 +95,17 @@ export default function LearningPlayer() {
   };
 
   const downloadPDF = () => {
+    if (activeUnit.pdfUrl) {
+      const a = document.createElement("a");
+      a.href = activeUnit.pdfUrl;
+      a.download = activeUnit.pdfFileName || `${activeUnit.title}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      toast.success("Lesson PDF downloaded");
+      return;
+    }
+
     const doc = new jsPDF({ unit: "pt", format: "a4" });
     doc.setFontSize(22);
     doc.text(activeUnit.title, 40, 60);
@@ -224,7 +235,15 @@ export default function LearningPlayer() {
                     </div>
                     <Button onClick={downloadPDF} variant="outline" size="sm"><Download className="h-3.5 w-3.5 mr-1.5" />Download</Button>
                   </div>
-                  <article className="prose prose-sm max-w-none dark:prose-invert bg-card rounded-md p-6 border" dangerouslySetInnerHTML={{ __html: activeUnit.readingHtml }} />
+                  {activeUnit.pdfUrl ? (
+                    <iframe
+                      title={`${activeUnit.title} PDF`}
+                      src={activeUnit.pdfUrl}
+                      className="h-[560px] w-full rounded-md border bg-white"
+                    />
+                  ) : (
+                    <article className="prose prose-sm max-w-none dark:prose-invert bg-card rounded-md p-6 border" dangerouslySetInnerHTML={{ __html: activeUnit.readingHtml }} />
+                  )}
                 </div>
               </TabsContent>
               <TabsContent value="resources" className="mt-4">
